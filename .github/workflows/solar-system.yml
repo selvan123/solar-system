@@ -26,4 +26,13 @@ jobs:
         - name: Install Dependencies
           run: npm install
     
- 
+        - name: Unit Testing
+          continue-on-error: true 
+          run: npm test
+          
+        - name: Archive Test Result
+          continue-on-error: true 
+          uses: actions/upload-artifact@v3
+          with:
+            name: Mocha-Test-Result
+            path: test-results.xml
